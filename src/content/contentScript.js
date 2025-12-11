@@ -10,7 +10,7 @@ const createPanel = () => {
   
   // Create Iframe
   panelIframe = document.createElement("iframe");
-  panelIframe.src = chrome.runtime.getURL("panel.html");
+  panelIframe.src = chrome.runtime.getURL("src/panel/panel.html");
   panelIframe.style.position = "fixed";
   panelIframe.style.top = "0";
   panelIframe.style.right = "0";

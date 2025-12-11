@@ -60,7 +60,7 @@ let conversation = [];
 
 const loadEnv = async () => {
   try {
-    const url = chrome.runtime.getURL('env.json');
+  const url = chrome.runtime.getURL('env.json');
     const r = await fetch(url);
     if (!r.ok) return {};
     return await r.json();
@@ -410,7 +410,7 @@ modelInput.addEventListener('blur', () => { saveDefaults(); });
 btnClose.addEventListener('click', () => parent.postMessage({ type: 'TOGGLE_PANEL_FROM_IFRAME' }, '*'));
 btnContext.addEventListener('click', () => parent.postMessage({ type: 'REQUEST_CONTEXT' }, '*'));
 btnSelection.addEventListener('click', () => parent.postMessage({ type: 'REQUEST_SELECTION' }, '*'));
-openSettings.addEventListener('click', e => { e.preventDefault(); window.open(chrome.runtime.getURL('options.html'), '_blank'); });
+openSettings.addEventListener('click', e => { e.preventDefault(); window.open(chrome.runtime.getURL('src/options/options.html'), '_blank'); });
 const btnFullscreen = qs('#btnFullscreen');
 btnFullscreen.addEventListener('click', () => parent.postMessage({ type: 'PANEL_TOGGLE_FULLSCREEN' }, '*'));
 

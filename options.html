@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="options.css">
+  <title>设置</title>
+</head>
+<body>
+  <div class="wrap">
+    <h1>设置</h1>
+    <section>
+      <h2>LLM 提供商</h2>
+      <div class="list" id="providerList"></div>
+      
+      <!-- Default Model Input (Moved here) -->
+      <div class="default-config" style="margin-bottom: 16px; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+        <label for="defModel" style="display: block; margin-bottom: 6px; font-size: 13px; color: var(--text-secondary);">默认模型 (全局生效)</label>
+        <input id="defModel" placeholder="如 gpt-4o (设置后自动保存)" />
+      </div>
+
+      <div class="form">
+        <input id="provName" placeholder="名称，如 OpenAI" />
+        <select id="provType">
+          <option value="openai">openai</option>
+          <option value="openrouter">openrouter</option>
+          <option value="glm">glm</option>
+        </select>
+        <div class="input-group">
+          <input id="provApiKey" type="password" placeholder="API Key" />
+          <button class="toggle-visibility" data-target="provApiKey" title="Toggle Visibility">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-off-icon" style="display: none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+          </button>
+        </div>
+        <input id="provBaseUrl" placeholder="自定义 Base URL，可留空" />
+        <button id="addProvider">添加/更新</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>n8n Webhooks</h2>
+      <div class="list" id="webhookList"></div>
+      <div class="form">
+        <input id="whName" placeholder="名称" />
+        <input id="whUrl" placeholder="Webhook URL" />
+        <input id="whField" placeholder="Input Field Name (Optional, e.g. chatInput)" />
+        <input id="whUser" placeholder="Username (Optional)" />
+        <div class="input-group">
+          <input id="whPass" type="password" placeholder="Password (Optional)" />
+          <button class="toggle-visibility" data-target="whPass" title="Toggle Visibility">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-off-icon" style="display: none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+          </button>
+        </div>
+        <button id="addWebhook">添加/更新</button>
+      </div>
+    </section>
+    
+    <!-- Removed standalone Defaults section -->
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>

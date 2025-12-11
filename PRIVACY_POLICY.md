@@ -1,85 +1,130 @@
-# Privacy Policy / 隐私政策
+# Privacy Policy for "n8n Trigger" Chrome Extension
 
-**Effective Date / 生效日期:** 2024-05-20
-
-## English Version
-
-### 1. Introduction
-Thank you for using **n8n Trigger** ("we," "us," or "our"). We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, and store your information when you use our Chrome Extension.
-
-### 2. Information Collection and Use
-
-**2.1. No Personal Data Collection**
-We do not collect, store, or transmit any personally identifiable information (PII) to our own servers. We do not track your browsing history, IP address, or usage patterns.
-
-**2.2. Local Storage**
-The following information is stored strictly on your local device using Chrome's `chrome.storage.local` API:
-- **API Keys:** Keys for LLM providers (e.g., OpenAI, ZhipuAI) that you manually enter.
-- **Configuration:** Settings for n8n webhooks and extension preferences.
-- **Chat History:** Text logs of your conversations with the AI.
-
-**2.3. Data Transmission**
-Your data is transmitted only when you explicitly perform an action (e.g., sending a message or triggering a workflow).
-- **To LLM Providers:** When you chat, your message and context are sent directly to the LLM provider you selected (e.g., OpenAI API).
-- **To n8n Workflows:** When you trigger a workflow, your selected text and context are sent directly to the n8n Webhook URL you configured.
-- **Direct Connection:** All network requests are made directly from your browser to the destination. We do not proxy traffic through our servers.
-
-### 3. Third-Party Services
-This extension interacts with third-party services configured by you. We are not responsible for the privacy practices of these third parties. We encourage you to review their privacy policies:
-- OpenAI Privacy Policy
-- ZhipuAI (GLM) Privacy Policy
-- Your self-hosted or cloud-hosted n8n instance
-
-### 4. Permissions
-We request the following permissions for functionality only:
-- **Storage:** To save your settings locally.
-- **ActiveTab / All URLs:** To access the content of the page you are viewing *only when* you explicitly request to use it as context for AI analysis.
-- **Context Menus:** To provide right-click menu shortcuts.
-
-### 5. Changes to This Privacy Policy
-We may update this privacy policy from time to time. The updated version will be indicated by an updated "Effective Date".
-
-### 6. Contact Us
-If you have questions about this privacy policy, please contact us via the support section on our Chrome Web Store listing or our GitHub repository.
+**Effective Date:** December 11, 2025
+**Website:** `https://github.com/WaterDJiang/n8n-trigger`
 
 ---
 
-## 中文版本
+## English Version
 
-### 1. 简介
-感谢您使用 **n8n Trigger**（以下简称“我们”）。我们致力于保护您的个人信息和隐私权利。本隐私政策说明了您在使用我们的 Chrome 扩展程序时，我们如何收集、使用和存储您的信息。
+### 1. Overview
 
-### 2. 信息收集与使用
+The **n8n Trigger** Chrome Extension values your privacy and is designed to be as secure and transparent as possible. This Privacy Policy outlines what data is collected, how it’s used, and what permissions the extension requests.
 
-**2.1. 不收集个人数据**
-我们不会收集、存储或传输任何个人身份信息 (PII) 到我们自己的服务器。我们不会追踪您的浏览历史、IP 地址或使用模式。
+### 2. Data Collection
 
-**2.2. 本地存储**
-以下信息仅通过 Chrome 的 `chrome.storage.local` API 存储在您的本地设备上：
-- **API 密钥**：您手动输入的 LLM 提供商密钥（如 OpenAI、智谱 AI）。
-- **配置信息**：n8n Webhook 设置和扩展程序偏好设置。
-- **聊天记录**：您与 AI 的对话文本记录。
+The extension **does not collect, transmit, or store any personal data** on external servers owned by the extension developers.
 
-**2.3. 数据传输**
-仅当您明确执行操作（例如发送消息或触发工作流）时，您的数据才会被传输。
-- **至 LLM 提供商**：当您聊天时，您的消息和上下文会直接发送给您选择的 LLM 提供商（例如 OpenAI API）。
-- **至 n8n 工作流**：当您触发工作流时，您选中的文本和上下文会直接发送给您配置的 n8n Webhook URL。
-- **直接连接**：所有网络请求均直接从您的浏览器发起至目标地址。我们不会通过我们的服务器代理流量。
+All configuration data — such as API keys (OpenAI, ZhipuAI), webhook URLs, and chat history — is:
 
-### 3. 第三方服务
-本扩展程序会与您配置的第三方服务进行交互。我们要不对这些第三方的隐私惯例负责。建议您阅读他们的隐私政策：
-- OpenAI 隐私政策
-- 智谱 AI (GLM) 隐私政策
-- 您自托管或云托管的 n8n 实例
+- Stored **locally** on your device using `chrome.storage.local`.
+- **Never uploaded** to our servers.
+- **Never synchronized** via Google Cloud (Zero Cloud policy for keys).
 
-### 4. 权限说明
-我们申请以下权限仅用于实现功能：
-- **Storage (存储)**：用于在本地保存您的设置。
-- **ActiveTab / All URLs**：仅在您明确请求将当前页面内容作为 AI 分析的上下文时，才访问您正在浏览的页面内容。
-- **Context Menus (上下文菜单)**：用于提供右键快捷菜单。
+Data is only transmitted to the specific third-party services you explicitly configure (e.g., OpenAI API or your own n8n instance).
 
-### 5. 隐私政策的变更
-我们可能会不时更新本隐私政策。更新后的版本将标有新的“生效日期”。
+### 3. Permissions Used
 
-### 6. 联系我们
-如果您对本隐私政策有任何疑问，请通过 Chrome 应用商店的详情页或我们的 GitHub 仓库的支持部分与我们联系。
+The extension requires the following permissions to function:
+
+- `storage`: To securely save your API keys, webhook URLs, and chat history locally.
+- `activeTab`: To access the current tab’s URL and title for context-aware features.
+- `scripting`: To inject the sidebar interface and handle text selection on webpages.
+- `contextMenus`: To add right-click options like "Chat with selection" or "Send to n8n".
+- `tabs`: To manage the connection between the sidebar and your open tabs.
+- `<all_urls>`: To allow the sidebar assistant to work on any webpage you visit.
+
+**Network Requests:** The extension makes direct connections from your browser to:
+1. The LLM providers you configure (e.g., `api.openai.com`).
+2. The n8n Webhook URLs you provide.
+
+### 4. What Happens When You Use the Extension
+
+- **Chatting with AI:** When you send a message, the text and any selected context are sent directly to your chosen LLM provider (e.g., OpenAI).
+- **Triggering n8n Workflows:** When you click "Send" or use the context menu:
+  - A `POST` request is sent to the webhook URL you provided.
+  - The request contains data from the current page, selected content, and your input.
+  - This only happens **when you initiate it**.
+
+### 5. No Tracking or Analytics
+
+This extension:
+
+- Does **not track your activity**.
+- Does **not use any analytics tools**.
+- Does **not log** or monitor your browsing behavior.
+
+### 6. Open Source Transparency
+
+This extension is **Open Source**. You can review the full code to verify our privacy claims.
+
+### 7. Contact
+
+If you have questions about privacy or the extension in general, please contact us via our GitHub repository or the Chrome Web Store support page.
+
+### 8. Changes to this Policy
+
+If this Privacy Policy changes in the future, updates will be reflected in the Chrome Web Store listing. No silent changes will be made.
+
+---
+
+## 中文版本 (Chinese Version)
+
+### 1. 概述
+
+**n8n Trigger** Chrome 扩展程序高度重视您的隐私，并致力于提供最安全、透明的服务。本隐私政策概述了我们收集哪些数据、如何使用这些数据以及扩展程序请求哪些权限。
+
+### 2. 数据收集
+
+本扩展程序 **不会** 在开发者的外部服务器上 **收集、传输或存储任何个人数据**。
+
+所有配置数据——例如 API 密钥（OpenAI, 智谱 AI）、Webhook URL 和聊天记录——均：
+
+- 使用 `chrome.storage.local` **仅存储在您的本地设备上**。
+- **绝不上传** 到我们的服务器。
+- **绝不** 通过 Google 云端同步（密钥零云端策略）。
+
+数据仅会发送到您明确配置的特定第三方服务（例如 OpenAI API 或您自己的 n8n 实例）。
+
+### 3. 权限使用说明
+
+本扩展程序需要以下权限才能运行：
+
+- `storage`：用于在本地安全地保存您的 API 密钥、Webhook URL 和聊天记录。
+- `activeTab`：用于获取当前标签页的 URL 和标题，以实现上下文感知功能。
+- `scripting`：用于在网页中注入侧边栏界面并处理文本选择。
+- `contextMenus`：用于添加右键菜单选项，如“与选中内容聊天”或“发送到 n8n”。
+- `tabs`：用于管理侧边栏与您打开的标签页之间的连接。
+- `<all_urls>`：允许侧边栏助手在您访问的任何网页上工作。
+
+**网络请求：** 扩展程序会从您的浏览器直接发起连接至：
+1. 您配置的 LLM 提供商（如 `api.openai.com`）。
+2. 您提供的 n8n Webhook URL。
+
+### 4. 当您使用扩展程序时会发生什么
+
+- **与 AI 聊天**：当您发送消息时，文本和任何选中的上下文会直接发送给您选择的 LLM 提供商（例如 OpenAI）。
+- **触发 n8n 工作流**：当您点击“发送”或使用右键菜单时：
+  - 系统会向您提供的 Webhook URL 发送一个 `POST` 请求。
+  - 请求包含来自当前页面的数据、选中的内容和您的输入。
+  - 这仅在 **您主动发起时** 发生。
+
+### 5. 无追踪或分析
+
+本扩展程序：
+
+- **不追踪您的活动**。
+- **不使用任何分析工具**。
+- **不记录** 或监控您的浏览行为。
+
+### 6. 开源透明
+
+本扩展程序是 **开源** 的。您可以查看完整代码以验证我们的隐私声明。
+
+### 7. 联系方式
+
+如果您对隐私或本扩展程序有任何疑问，请通过我们的 GitHub 仓库或 Chrome 应用商店支持页面与我们联系。
+
+### 8. 政策变更
+
+如果未来本隐私政策发生变化，更新内容将反映在 Chrome 应用商店的详情页中。我们不会进行任何悄无声息的更改。

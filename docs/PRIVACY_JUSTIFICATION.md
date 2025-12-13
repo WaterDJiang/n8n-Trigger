@@ -28,20 +28,14 @@ The single purpose of this extension is to serve as an integrated browser sideba
 需要此权限以获取当前用户正在浏览的标签页的标题和 URL。当用户选择将“页面上下文”发送给 AI 或 n8n 工作流时，这些元数据将作为上下文的一部分，帮助用户更好地管理和识别数据来源。
 (Used to access the title and URL of the current active tab. This metadata is included as context when the user explicitly chooses to send page content to AI or n8n workflows.)
 
-### scripting
-**理由：**
-这是本扩展程序的核心功能所必需的。我们需要此权限将侧边栏（iframe）和交互脚本注入到当前网页中。这使得用户可以在不离开当前页面的情况下打开聊天窗口、预览选中的文本，并与扩展程序进行交互。
-(Essential for the extension's core functionality. Used to inject the sidebar interface and interaction scripts into the current webpage, allowing users to chat and interact with the extension without leaving the page.)
+
 
 ### contextMenus
 **理由：**
 需要此权限在浏览器的右键菜单中添加快捷操作（如“打开聊天”、“发送选中内容到 n8n”）。这为用户提供了一种快速触发扩展功能的方式，特别是在处理网页上的选中文本时。
 (Used to add quick actions to the browser's context menu (e.g., "Open Chat", "Send selection to n8n"), providing users with a convenient way to trigger extension features directly from selected text.)
 
-### tabs
-**理由：**
-虽然主要交互发生在 activeTab，但在某些场景下（如侧边栏初始化或多标签页切换时保持状态），需要此权限来识别和管理标签页 ID，确保消息和上下文能准确地在侧边栏和正确的内容脚本之间传递。
-(Used to manage tab IDs for reliable communication between the sidebar and content scripts, ensuring that chat context and state are correctly maintained across tab switches.)
+
 
 ### 主机权限 (Host Permissions) - <all_urls>
 **理由：**

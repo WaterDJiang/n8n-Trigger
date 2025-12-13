@@ -3,7 +3,7 @@
   "name": "n8n TTtrigger",
   "version": "0.1.0",
   "description": "Sidebar chat with selection, context, n8n webhooks, and configurable LLM providers",
-  "permissions": ["storage", "activeTab", "scripting", "contextMenus", "tabs"],
+  "permissions": ["storage", "activeTab", "contextMenus"],
   "host_permissions": ["<all_urls>", "https://api.openai.com/*", "https://openrouter.ai/*", "https://open.bigmodel.cn/*"],
   "icons": {
     "16": "assets/logo.png",

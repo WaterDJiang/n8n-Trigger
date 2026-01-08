@@ -9,25 +9,15 @@
 <body>
   <div class="panel">
     <div class="main">
-      <div class="panel-header">
-        <div class="title">n8n TTtrigger</div>
-        <div class="actions">
-          <button id="btnNewChat" title="新对话"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></button>
-          <button id="btnFullscreen" title="全屏"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button>
-          <button id="btnContext" title="上下文"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></button>
-          <button id="btnSelection" title="选中"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></button>
-          <button id="openSettings" title="设置"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></button>
-        </div>
-      </div>
       <div class="hero" id="hero">
-        <div class="hero-title">Hello</div>
-        <div class="hero-sub">Can I help you today?</div>
+        <div class="hero-title" data-i18n="hello">Hello</div>
+        <div class="hero-sub" data-i18n="can_help">Can I help you today?</div>
       </div>
       <div id="messages" class="messages"></div>
       <div class="composer">
         <div id="selection-preview" class="selection-preview" style="display: none;">
           <div class="selection-text"></div>
-          <button class="selection-close" aria-label="Remove selection">
+          <button class="selection-close" aria-label="Remove selection" data-i18n-tooltip="remove_selection">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         </div>
@@ -36,32 +26,29 @@
           <div class="config-left">
             <div class="provider-badge">
               <span id="providerLabel">GLM</span>
-              <select id="providerSelect" title="Provider"></select>
+              <select id="providerSelect" title="Provider" data-i18n-tooltip="provider_label"></select>
             </div>
-            <input id="modelInput" placeholder="Model Name" />
-          </div>
-          <div class="config-right">
             <!-- n8n Group -->
             <div class="n8n-group">
               <div class="provider-badge n8n-label">n8n</div>
               <div class="webhook-selector">
-                <span id="webhookLabel">Select Workflow</span>
-                <select id="webhookSelect" title="N8N Webhook"></select>
+                <span id="webhookLabel" data-i18n="webhook_label">Select Workflow</span>
+                <select id="webhookSelect" title="N8N Webhook" data-i18n-tooltip="webhook_label"></select>
               </div>
             </div>
-
-            <div class="divider-vertical"></div>
-
+            <input id="modelInput" placeholder="Model Name" data-i18n-placeholder="model_placeholder" style="display: none;" />
+          </div>
+          <div class="config-right">
             <div class="tool-actions">
               <div class="tool-item">
                 <input type="checkbox" id="sendToN8N" hidden />
-                <label for="sendToN8N" class="tool-icon" aria-label="发送到 n8n" data-tooltip="发送到 n8n">
+                <label for="sendToN8N" class="tool-icon" aria-label="激活发送到 n8n" data-tooltip="激活发送到 n8n" data-i18n-tooltip="send_to_n8n">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                 </label>
               </div>
               <div class="tool-item">
                 <input type="checkbox" id="useContext" hidden />
-                <label for="useContext" class="tool-icon" aria-label="引用网页全文" data-tooltip="引用网页全文">
+                <label for="useContext" class="tool-icon" aria-label="引用网页全文" data-tooltip="引用网页全文" data-i18n-tooltip="use_context">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                 </label>
               </div>
@@ -70,17 +57,40 @@
         </div>
 
         <div class="input-area">
-          <textarea id="input" placeholder="Type a message..."></textarea>
+          <textarea id="input" placeholder="Type a message..." data-i18n-placeholder="input_placeholder"></textarea>
           <button id="send"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></button>
         </div>
       </div>
     </div>
+    <div class="history-main" id="history-main" style="display: none;">
+      <div class="history-header">
+        <button class="header-btn" id="btnBackToChat" aria-label="返回" data-tooltip="" data-i18n-tooltip="back_to_chat">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </button>
+        <h2 data-i18n="history_title">History</h2>
+        <div class="header-spacer"></div>
+      </div>
+      <div id="history-list" class="history-list"></div>
+    </div>
     <div class="side">
-      <button class="side-btn" id="btnClose" aria-label="关闭"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      <button class="side-btn" id="btnNewChat" aria-label="新对话" data-tooltip="" data-i18n-tooltip="new_chat"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></button>
+      <button class="side-btn" id="btnHistory" aria-label="历史记录" data-tooltip="" data-i18n-tooltip="history"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg></button>
+      <div class="spacer"></div>
+      <button class="side-btn" id="btnLang" aria-label="语言" data-tooltip="" data-i18n-tooltip="toggle_lang_label">
+        <span class="lang-text" style="font-weight: 600; font-size: 13px;">EN</span>
+      </button>
+      <button class="side-btn" id="openSettings" aria-label="设置" data-tooltip="" data-i18n-tooltip="settings"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></button>
+      <button class="side-btn" id="btnClose" aria-label="关闭" style="display: none;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
     </div>
   </div>
+  
+  <!-- Image Modal -->
+  <div id="image-modal" class="image-modal" style="display: none;">
+    <span class="image-modal-close">&times;</span>
+    <img class="image-modal-content" id="modal-image">
+  </div>
+
   <script src="../lib/marked.min.js"></script>
-  <script src="../lib/security.js"></script>
-  <script src="panel.js"></script>
+  <script type="module" src="panel.js"></script>
 </body>
 </html>

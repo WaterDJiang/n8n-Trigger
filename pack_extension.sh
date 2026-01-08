@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 定义输出文件名
-OUTPUT_FILE="n8n-trigger-extension-v0.1.0.zip"
+OUTPUT_FILE="n8n-trigger-extension-v0.2.2.zip"
 
 # 清理旧的构建文件
 rm -f "$OUTPUT_FILE"

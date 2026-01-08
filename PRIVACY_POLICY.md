@@ -29,9 +29,7 @@ The extension requires the following permissions to function:
 
 - `storage`: To securely save your API keys, webhook URLs, and chat history locally.
 - `activeTab`: To access the current tab’s URL and title for context-aware features.
-- `scripting`: To inject the sidebar interface and handle text selection on webpages.
 - `contextMenus`: To add right-click options like "Chat with selection" or "Send to n8n".
-- `tabs`: To manage the connection between the sidebar and your open tabs.
 - `<all_urls>`: To allow the sidebar assistant to work on any webpage you visit.
 
 **Network Requests:** The extension makes direct connections from your browser to:
@@ -92,9 +90,7 @@ If this Privacy Policy changes in the future, updates will be reflected in the C
 
 - `storage`：用于在本地安全地保存您的 API 密钥、Webhook URL 和聊天记录。
 - `activeTab`：用于获取当前标签页的 URL 和标题，以实现上下文感知功能。
-- `scripting`：用于在网页中注入侧边栏界面并处理文本选择。
 - `contextMenus`：用于添加右键菜单选项，如“与选中内容聊天”或“发送到 n8n”。
-- `tabs`：用于管理侧边栏与您打开的标签页之间的连接。
 - `<all_urls>`：允许侧边栏助手在您访问的任何网页上工作。
 
 **网络请求：** 扩展程序会从您的浏览器直接发起连接至：

@@ -1,4 +1,6 @@
-class SecurityGuardrails {
+import i18n from './i18n.js';
+
+export class SecurityGuardrails {
   /**
    * Sanitizes input to prevent XSS and other injection attacks.
    * Although we use safe DOM methods, this adds an extra layer.
@@ -25,7 +27,7 @@ class SecurityGuardrails {
     if (typeof input !== 'string') return input;
     
     // Redact OpenAI-style API keys
-    let redacted = input.replace(/sk-[a-zA-Z0-9]{20,}/g, '[REDACTED API KEY]');
+    let redacted = input.replace(/sk-[a-zA-Z0-9]{20,}/g, i18n.t('sec_redacted_key'));
     
     // Redact potential Email addresses
     // redacted = redacted.replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '[REDACTED EMAIL]');
@@ -44,8 +46,8 @@ class SecurityGuardrails {
     // Example checks for Prompt Injection
     // These are very basic and should be expanded based on threat model
     const injectionPatterns = [
-      { pattern: /ignore previous instructions/i, reason: "Potential prompt injection: 'Ignore previous instructions'" },
-      { pattern: /system prompt/i, reason: "Potential prompt injection: Accessing 'system prompt'" }
+      { pattern: /ignore previous instructions/i, reason: i18n.t('sec_ignore_instructions') },
+      { pattern: /system prompt/i, reason: i18n.t('sec_system_prompt') }
     ];
 
     for (const check of injectionPatterns) {

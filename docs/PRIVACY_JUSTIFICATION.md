@@ -37,6 +37,18 @@ The single purpose of this extension is to serve as an integrated browser sideba
 
 
 
+### sidePanel
+**理由：**
+本扩展程序使用 Side Panel（侧边栏）为用户提供一个持久的、非侵入式的交互界面。用户可以在浏览网页的同时，在侧边栏中：
+1. 与配置的 LLM（如 OpenAI、Gemini）进行实时对话，无需频繁切换窗口。
+2. 将当前网页的内容或选中的文本作为上下文发送给 AI 或 n8n 自动化工作流。
+Side Panel 允许用户在不离开当前标签页的情况下保持工作流的连续性，是本扩展程序核心功能（AI 辅助与自动化触发）的最佳承载形式。
+(The Side Panel is essential for this extension to function as a browsing companion. It provides a persistent interface where users can:
+1. Chat with LLMs (like OpenAI, Gemini) using the current web page content as context.
+2. Trigger n8n automation workflows without leaving the current tab.
+Unlike a popup, the Side Panel remains open while the user interacts with the web page, allowing for a seamless workflow between browsing and AI assistance.)
+
+
 ### 主机权限 (Host Permissions) - <all_urls>
 **理由：**
 本扩展程序被设计为通用生产力工具，适用于用户浏览的任何网页。我们需要访问所有 URL 的权限，以便在用户访问的任何页面上注入侧边栏助手，并允许用户读取该页面的内容（仅在用户主动操作时）作为 AI 分析的上下文。

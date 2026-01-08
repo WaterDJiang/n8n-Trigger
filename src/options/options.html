@@ -4,61 +4,196 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="options.css">
-  <title>设置</title>
+  <title data-i18n="options_title">设置</title>
 </head>
 <body>
   <div class="wrap">
-    <h1>设置</h1>
-    <section>
-      <h2>LLM 提供商</h2>
-      <div class="list" id="providerList"></div>
-      
-      <!-- Default Model Input (Moved here) -->
-      <div class="default-config" style="margin-bottom: 16px; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px;">
-        <label for="defModel" style="display: block; margin-bottom: 6px; font-size: 13px; color: var(--text-secondary);">默认模型 (全局生效)</label>
-        <input id="defModel" placeholder="如 gpt-4o (设置后自动保存)" />
+    <header class="app-header">
+      <div class="logo-area">
+        <span class="brand-n8n">n8n</span>
+        <img src="../../assets/logo.png" class="app-logo" alt="Logo" width="32" height="32">
+        <span class="brand-trigger">Trigger</span>
       </div>
+      <p class="tagline" data-i18n="tagline">连接网页内容与您的 AI 工作流</p>
+    </header>
 
-      <div class="form">
-        <input id="provName" placeholder="名称，如 OpenAI" />
-        <select id="provType">
-          <option value="openai">openai</option>
-          <option value="openrouter">openrouter</option>
-          <option value="glm">glm</option>
-        </select>
-        <div class="input-group">
-          <input id="provApiKey" type="password" placeholder="API Key" />
-          <button class="toggle-visibility" data-target="provApiKey" title="Toggle Visibility">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-off-icon" style="display: none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
-          </button>
+    <section class="intro-card">
+      <div class="intro-content">
+        <p data-i18n="intro_text">本插件旨在简化浏览器与 n8n 自动化工作流的交互。您可以一键抓取网页正文、选中文本，并结合自定义 Prompt 发送到 n8n Webhook 进行处理。</p>
+        <div class="features">
+          <div class="feature-item">
+            <span class="icon">🚀</span>
+            <span data-i18n="feature_trigger">一键触发自动化</span>
+          </div>
+          <div class="feature-item">
+            <span class="icon">🤖</span>
+            <span data-i18n="feature_llm">集成多种 LLM</span>
+          </div>
+          <div class="feature-item">
+            <span class="icon">🔗</span>
+            <span data-i18n="feature_n8n">灵活对接 n8n</span>
+          </div>
         </div>
-        <input id="provBaseUrl" placeholder="自定义 Base URL，可留空" />
-        <button id="addProvider">添加/更新</button>
       </div>
     </section>
 
-    <section>
-      <h2>n8n Webhooks</h2>
-      <div class="list" id="webhookList"></div>
-      <div class="form">
-        <input id="whName" placeholder="名称" />
-        <input id="whUrl" placeholder="Webhook URL" />
-        <input id="whField" placeholder="Input Field Name (Optional, e.g. chatInput)" />
-        <input id="whUser" placeholder="Username (Optional)" />
-        <div class="input-group">
-          <input id="whPass" type="password" placeholder="Password (Optional)" />
-          <button class="toggle-visibility" data-target="whPass" title="Toggle Visibility">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-off-icon" style="display: none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
-          </button>
+    <main class="settings-grid">
+      <section class="settings-card">
+        <div class="card-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5c0-2.76-2.24-5-5-5z"></path></svg>
+          <h2 data-i18n="llm_providers">LLM 提供商</h2>
         </div>
-        <button id="addWebhook">添加/更新</button>
-      </div>
-    </section>
+        <p class="section-desc" data-i18n="llm_desc">配置 OpenAI、GLM 等大模型服务，用于插件内的直接对话功能。</p>
+        
+        <div class="list" id="providerList"></div>
+        
+        <div class="form">
+          <input id="provName" placeholder="名称，如 OpenAI" data-i18n-placeholder="provider_name_placeholder" />
+          <select id="provType">
+            <option value="openai">OpenAI</option>
+            <option value="openrouter">OpenRouter</option>
+            <option value="glm">GLM</option>
+            <option value="gemini">Gemini</option>
+            <option value="other" data-i18n="other">Other</option>
+          </select>
+          <div class="input-group">
+            <input id="provModel" placeholder="模型名称，如 gpt-4o" data-i18n-placeholder="model_placeholder" />
+          </div>
+          <div class="input-group">
+            <input id="provApiKey" type="password" placeholder="API Key" data-i18n-placeholder="api_key_placeholder" />
+            <button class="toggle-visibility" data-target="provApiKey" title="显示/隐藏">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-off-icon" style="display: none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+            </button>
+          </div>
+          <input id="provBaseUrl" placeholder="自定义 Base URL，可留空" data-i18n-placeholder="base_url_placeholder" />
+          <div class="button-group">
+            <button id="addProvider" class="primary-btn" data-i18n="add_btn">添加</button>
+            <button id="cancelProvider" class="secondary-btn" style="display: none;" data-i18n="cancel_btn">取消</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="settings-card">
+        <div class="card-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+          <h2 data-i18n="n8n_webhooks">n8n Webhooks</h2>
+        </div>
+        <p class="section-desc" data-i18n="n8n_desc">配置 n8n 的 Webhook 地址，将网页内容发送到您的工作流。</p>
+
+        <div class="list" id="webhookList"></div>
+        <div class="form">
+          <input id="whName" placeholder="名称" data-i18n-placeholder="webhook_name_placeholder" />
+          <input id="whUrl" placeholder="Webhook URL" data-i18n-placeholder="webhook_url_placeholder" />
+          <div class="input-group">
+            <input id="whField" placeholder="Input Field Name (可选，默认 chatInput)" data-i18n-placeholder="field_name_placeholder" />
+            <button class="info-btn" id="showFieldInfo" title="说明">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+          </div>
+          <div class="input-group">
+            <input id="whUser" placeholder="Username (可选)" data-i18n-placeholder="username_placeholder" />
+            <button class="info-btn" id="showAuthInfo" title="身份验证说明">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+          </div>
+          <div class="input-group">
+            <input id="whPass" type="password" placeholder="Password (可选)" data-i18n-placeholder="password_placeholder" />
+            <button class="toggle-visibility" data-target="whPass" title="显示/隐藏">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-off-icon" style="display: none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+            </button>
+          </div>
+          <div class="button-group">
+            <button id="addWebhook" class="primary-btn" data-i18n="add_btn">添加</button>
+            <button id="cancelWebhook" class="secondary-btn" style="display: none;" data-i18n="cancel_btn">取消</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="settings-card">
+        <div class="card-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <h2 data-i18n="config_management">配置管理</h2>
+        </div>
+        <p class="section-desc" data-i18n="config_desc">导出或导入您的配置（LLM 提供商和 n8n Webhooks）。</p>
+        <div class="button-group" style="margin-top: 15px;">
+          <button id="exportConfig" class="secondary-btn" data-i18n="export_config">导出配置</button>
+          <button id="importConfigBtn" class="secondary-btn" data-i18n="import_config">导入配置</button>
+          <input type="file" id="importConfigFile" accept=".json" style="display: none;" />
+        </div>
+      </section>
+
+    </main>
     
-    <!-- Removed standalone Defaults section -->
+    <footer class="app-footer">
+      <p>Made with ❤️ for automation enthusiasts.</p>
+    </footer>
   </div>
-  <script src="options.js"></script>
+
+  <!-- Info Modal -->
+  <div id="infoModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>字段名称说明</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p><strong>这是什么？</strong><br>
+        这个名称就像一个“变量名”，用于告诉 n8n 哪一部分数据是你发送的文本内容。</p>
+        
+        <p><strong>如何配合 n8n 使用？</strong></p>
+        <ol>
+          <li><strong>插件端</strong>：默认名称为 <code>chatInput</code>。你也可以修改它与你的 n8n 节点参数一致，例如改为 <code>question</code>。</li>
+          <li><strong>n8n 端</strong>：在 n8n 节点中，使用表达式 <code>{{ $json.body.chatInput }}</code> (如果你改了名，就用新名字) 来获取内容。</li>
+        </ol>
+        
+        <p><strong>插件发送给 n8n 的完整数据示例：</strong><br>
+        <span style="font-size: 12px; color: var(--text-secondary);">n8n 收到的 Body 数据结构字段如下，你可以在 n8n 直接引用这些字段：</span></p>
+        <pre>{
+  "chatInput": "完整内容 (包含网页上下文+用户输入)",
+  "text": "同 chatInput",
+  "message": "同 chatInput",
+  "guardrailsInput": "同 chatInput",
+  "input": "仅用户手动输入的内容",
+  "selection": "用户选中的网页文字",
+  "context": "网页全文内容 (如果勾选)",
+  "model": "当前使用的模型名称",
+  "messages": [
+    { "role": "user", "content": "..." }
+  ],
+  "page": {
+    "title": "网页标题",
+    "url": "网页链接"
+  }
+}</pre>
+        
+        <p class="note">譬如：如果你使用 n8n 的 AI 节点，将 Prompt 的输入参数设定为 <code>{{ $json.body.chatInput }} </code> 即可。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auth Info Modal -->
+  <div id="authModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>身份验证 (Basic Auth) 说明</h3>
+        <button class="close-modal auth-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>这两个字段用于 n8n Webhook 的 <strong>Basic Auth</strong> 鉴权。</p>
+        
+        <p><strong>如何配置？</strong></p>
+        <ol>
+          <li><strong>n8n 端</strong>：在 Webhook 节点设置中，将 <code>Authentication</code> 选为 <code>Basic Auth</code>。然后新建或选择一个 Credential（包含用户名和密码）。</li>
+          <li><strong>插件端</strong>：将你在 n8n Credential 中设置的 <strong>User</strong> 和 <strong>Password</strong> 填入此处。</li>
+        </ol>
+        
+        <p class="note">注意：如果你的 Webhook 节点设置的是 <code>Authentication: None</code> (公开)，请留空这两个字段。</p>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="options.js"></script>
 </body>
 </html>
